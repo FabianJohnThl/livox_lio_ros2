@@ -91,3 +91,9 @@ install(
 )
 
 ament_package()
+
+ament_auto_package(INSTALL_TO_SHARE
+    config
+    launch
+    rviz_cfg
+  )
