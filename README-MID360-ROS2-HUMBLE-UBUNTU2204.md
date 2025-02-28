@@ -85,18 +85,6 @@ sudo apt install libsuitesparse-dev libpcl-dev -y
 sudo apt-get install ros-humble-pcl-ros
 ```
 
-- googletest
-
-```
-cd ~
-sudo rm -r googletest
-git clone https://github.com/google/googletest.git
-cd googletest
-mkdir build && cd build
-cmake .. && make -j && sudo make install
-cd ~
-```
-
 - google log
 
 ```
@@ -121,10 +109,6 @@ mkdir build && cd build
 cmake .. && make -j && sudo make install
 cd ~
 ```
-
-- abseil-cpp ??? TBD
-- eigen ??? TBD
-
 ### installation
 
 ```
