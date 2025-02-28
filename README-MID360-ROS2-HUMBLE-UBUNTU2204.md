@@ -71,28 +71,52 @@ cd livox_ros_driver2
 
 ### Prerequisites
 
+- googletest
+
+```
+cd ~
+sudo rm -r googletest
+git clone https://github.com/google/googletest.git
+cd googletest
+mkdir build && cd build
+cmake .. && make -j && sudo make install
+cd ~
+```
+
+- google log
+
+```
+cd ~
+sudo rm -r glog
+git clone https://github.com/google/glog.git
+cd glog
+mkdir build && cd build
+cmake .. && make -j && sudo make install
+cd ~
+```
+
 - ceres in v 2.1.0 from source:
 ```
 cd ~
+sudo rm -r ceres-solver
 git clone https://github.com/ceres-solver/ceres-solver.git
 cd ceres-solver
 git checkout 2.1.0
-git submodule --init --recursive
+git submodule update --init --recursive
 mkdir build && cd build
-cmake .. && make -j
-sudo make install
+cmake .. && make -j && sudo make install
 cd ~
 ```
 
 - abseil-cpp ??? TBD
 - eigen ??? TBD
-- googletest ??? TBD
 
 ### installation
 
 ```
 cd ~
-cd ros2_ws/src/
+cd ros2_ws/src/livox_lio_ros2
+sudo rm -r 
 git clone https://github.com/FabianJohnThl/livox_lio_ros2.git
 cd ..
 colcon build --packages-select livox_lio
