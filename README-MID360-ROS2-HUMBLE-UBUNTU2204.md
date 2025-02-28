@@ -5,6 +5,13 @@
 ## Ubuntu
 
 - new installation of Ubuntu 22.04 Desktop with default packages
+- set the network interface where the MID360 is connected with to:
+```
+IP: 192.168.1.5
+SUBNET: 255.255.255.0
+Gateway: 192.168.1.1
+```
+- enable performance-mode
 
 ## ROS-HUMBLE
 
