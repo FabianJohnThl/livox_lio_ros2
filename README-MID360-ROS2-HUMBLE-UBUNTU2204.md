@@ -115,7 +115,7 @@ cd ~
 
 ```
 cd ~
-cd ros2_ws/src/livox_lio_ros2
+cd ros2_ws/src
 sudo rm -r livox_lio_ros2
 git clone https://github.com/FabianJohnThl/livox_lio_ros2.git
 cd ..
