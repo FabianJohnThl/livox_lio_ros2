@@ -71,6 +71,12 @@ cd livox_ros_driver2
 
 ### Prerequisites
 
+- suitesparse
+
+```
+sudo apt install libsuitesparse-dev -y
+```
+
 - googletest
 
 ```
@@ -121,6 +127,7 @@ git clone https://github.com/FabianJohnThl/livox_lio_ros2.git
 cd livox_lio_ros2
 git checkout ros2
 cd .. && cd ..
+source ./install/setup.bash # necessary to locate livox_ros_driver2 installation
 colcon build --packages-select lio_livox
 ln ~/start_bundle.sh src/livox_lio_ros2/start-scripts/start_bundle.sh
 sudo chmod +X ~/start_bundle.sh
