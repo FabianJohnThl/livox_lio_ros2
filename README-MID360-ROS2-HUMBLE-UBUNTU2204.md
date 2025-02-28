@@ -71,10 +71,10 @@ cd livox_ros_driver2
 
 ### Prerequisites
 
-- suitesparse
+- suitesparse, PCL
 
 ```
-sudo apt install libsuitesparse-dev -y
+sudo apt install libsuitesparse-dev install libpcl-dev -y
 ```
 
 - googletest
