@@ -126,6 +126,8 @@ sudo chmod +X ~/start_bundle.sh
 sudo chmod 777 ~/start_bundle.sh
 ln ~/start_lidar.sh src/livox_lio_ros2/start-scripts/start_lidar.sh
 ln ~/start_lio.sh src/livox_lio_ros2/start-scripts/start_lio.sh
+ln src/livox_ros_driver2/launch_ROS2/MID360_LIO_launch.py src/livox_lio_ros2/ros_driver_conf/launch_ROS2/MID360_LIO_launch.py
+ln src/livox_ros_driver2/config/MID360_LIO.json src/livox_lio_ros2/ros_driver_conf/launch_ROS2/MID360_LIO.json
 ```
 
 ## Configuration
