@@ -75,6 +75,7 @@ cd livox_ros_driver2
 
 ```
 sudo apt install libsuitesparse-dev install libpcl-dev -y
+sudo apt-get install ros-humble-pcl-ros
 ```
 
 - googletest
