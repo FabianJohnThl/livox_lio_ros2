@@ -119,7 +119,7 @@ cd ros2_ws/src
 sudo rm -r livox_lio_ros2
 git clone https://github.com/FabianJohnThl/livox_lio_ros2.git
 cd ..
-colcon build --packages-select livox_lio
+colcon build --packages-select lio_livox
 ln ~/start_bundle.sh src/livox_lio_ros2/start-scripts/start_bundle.sh
 sudo chmod +X ~/start_bundle.sh
 sudo chmod 777 ~/start_bundle.sh
