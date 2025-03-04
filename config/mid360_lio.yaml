@@ -6,9 +6,9 @@ ScanRegistration:
     # lines used for lio, set to 1~6
     Used_Line: 4
     # 0(false) or 1(true)
-    Feature_Mode: false
+    Feature_Mode: true
     # use segment algorithm
-    Use_seg: true
+    Use_seg: false
     NumCurvSize: 2
     # [m]  <DistanceFaraway near / >DistanceFaraway far
     DistanceFaraway: 30.
@@ -31,7 +31,7 @@ ScanRegistration:
 PoseEstimation:
   ros__parameters:
     # 0-Not Use IMU, 1-Use IMU remove Rotation Distort, 2-Tightly Coupled IMU
-    IMU_Mode: 1
+    IMU_Mode: 2
     # Voxel Filter Size Use to Downsize Map Cloud
     filter_parameter_corner: 0.2
     filter_parameter_surf: 0.4
