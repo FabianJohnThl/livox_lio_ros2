@@ -80,7 +80,7 @@ void pubOdometry(const Eigen::Matrix4d& newPose, double& time_full_cloud) {
     laserOdometryTrans.child_frame_id          = "livox_frame";
     laserOdometryTrans.header.stamp            = rclcpp::Time(static_cast<int64_t>(time_full_cloud * 1e9));
     laserOdometryTrans.transform.rotation.w    = newQuat.w();
-    laserOdometryTrans.transform.rotation.x    = newQuat.w();
+    laserOdometryTrans.transform.rotation.x    = newQuat.x();
     laserOdometryTrans.transform.rotation.y    = newQuat.y();
     laserOdometryTrans.transform.rotation.z    = newQuat.z();
     laserOdometryTrans.transform.translation.x = newPosition.x();
