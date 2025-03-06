@@ -26,7 +26,7 @@ ScanRegistration:
     KdTreeCornerOutlierDis: 0.2
     map_skip_frame: 2
     # 0-custom msg ,1 ros sensor msg pointcloud2 msg
-    msg_type: 0
+    msg_type: 1
 
 PoseEstimation:
   ros__parameters:
