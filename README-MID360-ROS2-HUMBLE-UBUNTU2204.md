@@ -157,7 +157,7 @@ ln -f src/livox_lio_ros2/start-scripts/start_slam.sh ~/start_slam.sh
 ln -f src/livox_lio_ros2/ros_driver_conf/launch_ROS2/MID360_LIO_launch.py src/livox_ros_driver2/launch_ROS2/MID360_LIO_launch.py
 ln -f src/livox_lio_ros2/ros_driver_conf/config/MID360_LIO.json src/livox_ros_driver2/config/MID360_LIO.json
 ln -f src/livox_lio_ros2/launch/pc2ls_launch.py ./pc2ls_launch.py
-ln -f src/livox_lio_ros2/launch/slam_gmapping_launch.py src/slam_gmapping/slam_gmapping/launch/slam_gmapping_launch.py
+cp src/livox_lio_ros2/launch/slam_gmapping_launch.py src/slam_gmapping/slam_gmapping/launch/slam_gmapping.launch.py
 ```
 
 ## Configuration
