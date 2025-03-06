@@ -8,12 +8,19 @@
 
 - new installation of Ubuntu 22.04 Desktop with default packages
 - set the network interface where the MID360 is connected with to:
+
 ```
 IP: 192.168.1.5
 SUBNET: 255.255.255.0
 Gateway: 192.168.1.1
 ```
+
 - enable performance-mode
+- install additional needed packages:
+
+```
+sudo apt install -y screen
+```
 
 ## ROS-HUMBLE
 
@@ -153,17 +160,8 @@ ln -f src/livox_lio_ros2/launch/slam_gmapping_launch.py ./slam_gmapping_launch.p
 
 ## Configuration
 
-- We use the Livox Custom Msg format here. Therefore we use the launch file: `~/ros2_ws/src/livox_ros_driver2/launch_ROS2/msg_MID360_launch.py`
-  ```
-  nano ~/ros2_ws/src/livox_ros_driver2/launch_ROS2/msg_MID360_launch.py
-  # change the publish_freq to 20.0
-  # check that xfer_format is 1
-
-  nano ~/ros2_ws/src/livox_ros_driver2/config/MID360_config.json
-  # check the correctness of the IP-Address of your host and Lidar
-  # apply your specific extrinsic_parameters
-  ```
-  
+- We use the customized launch and configuration files, that are linked from this repository into the used packages
+- Check your Lidar's IP address matches at: `~/ros2_ws/src/livox_lio_ros2/ros_driver_conf/config/MID360_LIO.json`  
 
 ## Run everything
 
