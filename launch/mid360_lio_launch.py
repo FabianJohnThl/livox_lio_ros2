@@ -61,7 +61,7 @@ def generate_launch_description():
                 'angle_min': -3.1415926535897, #-1.5708,  # -M_PI/2
                 'angle_max': 3.1415926535897, #1.5708,  # M_PI/2
                 'angle_increment': 0.0087,  # M_PI/360.0
-                'scan_time': 0.2, #3333,
+                'scan_time': 0.2, # CHECK: this value needs to match the pub_frequency of your MID360 (configured in ../ros_driver_conf/launch/MID360_LIO_launch.py)
                 'range_min': 0.1,
                 'range_max': 30.0,
                 'use_inf': True,
