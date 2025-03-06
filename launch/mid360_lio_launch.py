@@ -1,38 +1,72 @@
-import os
-from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.actions import IncludeLaunchDescription
-from launch_ros.actions import Node
-from launch_ros.substitutions import FindPackageShare
 from launch import LaunchDescription
-import launch
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
+from launch_ros.actions import Node
 
-cur_path = os.path.split(os.path.realpath(__file__))[0] + '/'
-cur_rviz_path = cur_path + '../rviz_cfg'
-rviz_config_path = os.path.join(cur_rviz_path, 'mid360_lio_ros2.rviz')
 
 def generate_launch_description():
-    ScanRegistration = Node(
-        package="lio_livox",
-        executable="ScanRegistration",
-        parameters=[[FindPackageShare("lio_livox"), "/config", "/mid360_lio.yaml"]],
-        output="screen",
-    )
-    PoseEstimation = Node(
-        package="lio_livox",
-        executable="PoseEstimation",
-        parameters=[[FindPackageShare("lio_livox"), "/config", "/mid360_lio.yaml"]],
-        output="screen",
-    )
-    livox_rviz = Node(
-        package='rviz2',
-        executable='rviz2',
-        output='screen',
-        arguments=['--display-config', rviz_config_path]
-    )
-
-    launch = LaunchDescription()
-    launch.add_action(ScanRegistration)
-    launch.add_action(PoseEstimation)
-    launch.add_action(livox_rviz)
-
-    return launch
+    return LaunchDescription([
+        DeclareLaunchArgument(
+            name='scanner', default_value='scanner',
+            description='Namespace for sample topics'
+        ),
+        Node(
+            package='tf2_ros',
+            executable='static_transform_publisher',
+            name='static_transform_publisher',
+            arguments=[
+                '--x', '0', '--y', '0', '--z', '0',
+                '--qx', '0', '--qy', '0', '--qz', '0', '--qw', '1',
+                '--frame-id', 'map', '--child-frame-id', 'cloud'
+            ]
+        ),
+        Node(
+            package='tf2_ros',
+            executable='static_transform_publisher',
+            name='static_transform_publisher',
+            arguments=[
+                '--x', '0', '--y', '0', '--z', '0',
+                '--qx', '0', '--qy', '0', '--qz', '0', '--qw', '1',
+                '--frame-id', 'livox_frame', '--child-frame-id', 'odom'
+            ]
+        ),
+        Node(
+            package='tf2_ros',
+            executable='static_transform_publisher',
+            name='static_transform_publisher',
+            arguments=[
+                '--x', '0', '--y', '0', '--z', '0',
+                '--qx', '0', '--qy', '0', '--qz', '0', '--qw', '1',
+                '--frame-id', 'lidar_init', '--child-frame-id', 'base_link'
+            ]
+        ),
+        Node(
+            package='tf2_ros',
+            executable='static_transform_publisher',
+            name='static_transform_publisher',
+            arguments=[
+                '--x', '0', '--y', '0', '--z', '0',
+                '--qx', '0', '--qy', '0', '--qz', '0', '--qw', '1',
+                '--frame-id', 'lidar_init', '--child-frame-id', 'map'
+            ]
+        ),
+        Node(
+            package='pointcloud_to_laserscan', executable='pointcloud_to_laserscan_node',
+            remappings=[('/cloud_in', '/lio_livox/full_cloud_mapped')],
+            parameters=[{
+                'target_frame': 'cloud',
+                'transform_tolerance': 0.01,
+                'min_height': 0.20,
+                'max_height': 0.60,
+                'angle_min': -3.1415926535897, #-1.5708,  # -M_PI/2
+                'angle_max': 3.1415926535897, #1.5708,  # M_PI/2
+                'angle_increment': 0.0087,  # M_PI/360.0
+                'scan_time': 0.2, #3333,
+                'range_min': 0.1,
+                'range_max': 30.0,
+                'use_inf': True,
+                'inf_epsilon': 1.0
+            }],
+            name='pointcloud_to_laserscan'
+        )
+    ])
