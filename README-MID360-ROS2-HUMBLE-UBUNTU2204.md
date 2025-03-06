@@ -74,6 +74,18 @@ cd livox_ros_driver2
 ./build.sh humble
 ```
 
+
+## SLAM-GMAPPING
+
+```
+cd ~
+cd ros2_ws/src/
+git clone https://github.com/Project-MANAS/slam_gmapping.git
+cd ..
+colcon build --packages-select slam_gmapping
+```
+
+
 ## livox LIO for ROS2
 
 ### Prerequisites
