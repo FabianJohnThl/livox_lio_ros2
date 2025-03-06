@@ -1,6 +1,8 @@
 # Livox-LIO with MID360 using ROS2-Humble on Ubuntu 22.04 Tutorial
 
 - This Tutorial provides information to get started with MID360 Lidar
+- We use LIO to generate the filtered 3D-Map and odometry
+- Then we use the pointcloud_to_laserscan package in  combination with slam_gmapping to create a 2D MAP based on the LIO's output
 
 ## Ubuntu
 
@@ -74,6 +76,11 @@ cd livox_ros_driver2
 ./build.sh humble
 ```
 
+## pointcloud_to_laserscan
+
+```
+sudo apt install -y ros-humble-pointcloud-to-laserscan
+```
 
 ## SLAM-GMAPPING
 
