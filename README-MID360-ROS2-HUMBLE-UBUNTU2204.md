@@ -135,6 +135,20 @@ mkdir build && cd build
 cmake .. && make -j && sudo make install
 cd ~
 ```
+
+- ceres in v 2.1.0rc2 from source (Jetson):
+```
+cd ~
+sudo rm -r ceres-solver
+git clone https://github.com/ceres-solver/ceres-solver.git
+cd ceres-solver
+git checkout 2.1.0
+git submodule update --init --recursive
+mkdir build && cd build
+cmake -DCMAKE_CUDA_COMPILER=/usr/local/cuda/bin/nvcc -DCMAKE_CUDA_ARCHITECTURES=87 -DCERES_USE_CUDA=ON -DBUILD_TESTING=OFF .. && make -j$(nproc) && sudo make install
+cd ~
+```
+
 ### installation
 
 ```
