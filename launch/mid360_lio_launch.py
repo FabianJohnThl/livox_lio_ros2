@@ -10,7 +10,16 @@ def generate_launch_description():
             name='scanner', default_value='scanner',
             description='Namespace for sample topics'
         ),
-        Node(
+        # Static transformers configuration:
+        # lidar_init: initial lidar pose (from LIO)
+        # livox_frame: current lidar pose (moves relative to lidar_init)
+        # base_link, odom, map: used by pointcloud_to_laserscan
+        # tree:
+        # livox_frame -> odom
+        # lidar_init -> base_link        
+        # lidar_init -> map
+        # map -> cloud
+        Node( # Generate static transformer: map -> cloud
             package='tf2_ros',
             executable='static_transform_publisher',
             name='static_transform_publisher',
@@ -20,7 +29,7 @@ def generate_launch_description():
                 '--frame-id', 'map', '--child-frame-id', 'cloud'
             ]
         ),
-        Node(
+        Node( # Generate static transformer: livox_frame -> odom
             package='tf2_ros',
             executable='static_transform_publisher',
             name='static_transform_publisher',
@@ -30,7 +39,7 @@ def generate_launch_description():
                 '--frame-id', 'livox_frame', '--child-frame-id', 'odom'
             ]
         ),
-        Node(
+        Node( # Generate static transformer: lidar_init -> base_link
             package='tf2_ros',
             executable='static_transform_publisher',
             name='static_transform_publisher',
@@ -40,7 +49,7 @@ def generate_launch_description():
                 '--frame-id', 'lidar_init', '--child-frame-id', 'base_link'
             ]
         ),
-        Node(
+        Node( # Generate static transformer: lidar_init -> map
             package='tf2_ros',
             executable='static_transform_publisher',
             name='static_transform_publisher',
@@ -52,7 +61,7 @@ def generate_launch_description():
         ),
         Node(
             package='pointcloud_to_laserscan', executable='pointcloud_to_laserscan_node',
-            remappings=[('/cloud_in', '/lio_livox/full_cloud_mapped')],
+            remappings=[('/cloud_in', '/lio_livox/full_cloud_mapped')], # remap topic of lasers' lio generated map to the /cloud_in topic (used as input from pointcloud_to_laserscan)
             parameters=[{
                 'target_frame': 'cloud',
                 'transform_tolerance': 0.01,
