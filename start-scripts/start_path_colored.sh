@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd ~/ros2_ws
-colcon build --packages-select livox_ros_driver2 
+colcon build --packages-select col_pth
 source ./install/setup.bash
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
-ros2 launch livox_ros_driver2 MID360_LIO_double_launch.py
+ros2 launch col_pth col_pth_launch.py
