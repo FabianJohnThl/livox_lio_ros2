@@ -11,7 +11,7 @@ ScanRegistration:
     Use_seg: false
     NumCurvSize: 2
     # [m]  <DistanceFaraway near / >DistanceFaraway far
-    DistanceFaraway: 30.
+    DistanceFaraway: 40.
     # nums of one part's flat featurel
     NumFlat: 3
     # nums of one scan's parts
@@ -31,7 +31,7 @@ ScanRegistration:
 PoseEstimation:
   ros__parameters:
     # 0-Not Use IMU, 1-Use IMU remove Rotation Distort, 2-Tightly Coupled IMU
-    IMU_Mode: 2
+    IMU_Mode: 0
     # Voxel Filter Size Use to Downsize Map Cloud
     filter_parameter_corner: 0.2
     filter_parameter_surf: 0.4
