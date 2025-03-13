@@ -101,11 +101,33 @@ colcon build --packages-select slam_gmapping
 
 ## Merge and Filter PointCloud2
 
-TBD (refer repo)
+- actual installation information: [merge and filter Repository](https://github.com/FabianJohnThl/point-cloud2-merge-filter-ros2-humble)
+
+```
+sudo apt install -y ros-humble-pcl-ros python3-pcl pcl-tools
+cd ~/ros2_ws/src
+sudo rm -r point-cloud2-merge-filter-ros2-humble
+git clone https://github.com/FabianJohnThl/point-cloud2-merge-filter-ros2-humble.git
+cd ..
+
+colcon build --packages-select pc_mrg_flt
+source ./install/setup.bash
+ros2 launch pc_mrg_flt pc_mrg_flt_launch.py
+```
 
 ## Colored Path based on 5G-RSRP measurements or with dummy values
 
-TBD (refer repo)
+- actual installation information: [Colored Path repo](https://github.com/FabianJohnThl/colored-path-ros2-humble)
+
+```
+cd ~/ros2_ws/src
+sudo rm -r colored-path-ros2-humble
+git clone https://github.com/FabianJohnThl/colored-path-ros2-humble.git
+cd ..
+
+colcon build --packages-select col_pth
+source ./install/setup.bash
+```
 
 ## livox LIO for ROS2
 
