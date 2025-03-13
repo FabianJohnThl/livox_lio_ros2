@@ -99,6 +99,13 @@ cd ..
 colcon build --packages-select slam_gmapping
 ```
 
+## Merge and Filter PointCloud2
+
+TBD (refer repo)
+
+## Colored Path based on 5G-RSRP measurements or with dummy values
+
+TBD (refer repo)
 
 ## livox LIO for ROS2
 
@@ -157,7 +164,7 @@ cd ros2_ws/src
 sudo rm -r livox_lio_ros2
 git clone https://github.com/FabianJohnThl/livox_lio_ros2.git
 cd livox_lio_ros2
-git checkout ros2
+git checkout ros2_dual_lidar
 cd .. && cd ..
 source ./install/setup.bash # necessary to locate livox_ros_driver2 installation
 colcon build --packages-select lio_livox
@@ -168,8 +175,12 @@ ln -f src/livox_lio_ros2/start-scripts/start_lidar.sh ~/start_lidar.sh
 ln -f src/livox_lio_ros2/start-scripts/start_lio.sh ~/start_lio.sh
 ln -f src/livox_lio_ros2/start-scripts/start_pc2ls.sh ~/start_pc2ls.sh
 ln -f src/livox_lio_ros2/start-scripts/start_slam.sh ~/start_slam.sh
+ln -f src/livox_lio_ros2/start-scripts/start_merge.sh ~/start_merge.sh
+ln -f src/livox_lio_ros2/start-scripts/start_path_colored.sh ~/start_path_colored.sh
 ln -f src/livox_lio_ros2/ros_driver_conf/launch_ROS2/MID360_LIO_launch.py src/livox_ros_driver2/launch_ROS2/MID360_LIO_launch.py
+ln -f src/livox_lio_ros2/ros_driver_conf/launch_ROS2/MID360_LIO_double_launch.py src/livox_ros_driver2/launch_ROS2/MID360_LIO_double_launch.py
 ln -f src/livox_lio_ros2/ros_driver_conf/config/MID360_LIO.json src/livox_ros_driver2/config/MID360_LIO.json
+ln -f src/livox_lio_ros2/ros_driver_conf/config/MID360_LIO_double.json src/livox_ros_driver2/config/MID360_LIO_double.json
 ln -f src/livox_lio_ros2/launch/pc2ls_launch.py ./pc2ls_launch.py
 cp src/livox_lio_ros2/launch/slam_gmapping_launch.py src/slam_gmapping/slam_gmapping/launch/slam_gmapping.launch.py
 ```
@@ -177,7 +188,7 @@ cp src/livox_lio_ros2/launch/slam_gmapping_launch.py src/slam_gmapping/slam_gmap
 ## Configuration
 
 - We use the customized launch and configuration files, that are linked from this repository into the used packages
-- Check your Lidar's IP address matches at: `~/ros2_ws/src/livox_lio_ros2/ros_driver_conf/config/MID360_LIO.json`  
+- Check your Lidar's IP address matches at: `~/ros2_ws/src/livox_lio_ros2/ros_driver_conf/config/MID360_LIO_double.json`  
 
 ## Run everything
 
@@ -186,5 +197,4 @@ cp src/livox_lio_ros2/launch/slam_gmapping_launch.py src/slam_gmapping/slam_gmap
 
 ```
 ~/start_bundle.sh
-
 ```
