@@ -120,6 +120,7 @@ ros2 launch pc_mrg_flt pc_mrg_flt_launch.py
 - actual installation information: [Colored Path repo](https://github.com/FabianJohnThl/colored-path-ros2-humble)
 
 ```
+pip install pyserial
 cd ~/ros2_ws/src
 sudo rm -r colored-path-ros2-humble
 git clone https://github.com/FabianJohnThl/colored-path-ros2-humble.git
@@ -133,10 +134,10 @@ source ./install/setup.bash
 
 ### Prerequisites
 
-- suitesparse, PCL
+- suitesparse, PCL, topic-tools
 
 ```
-sudo apt install libsuitesparse-dev libpcl-dev -y
+sudo apt install -y libsuitesparse-dev libpcl-dev ros-humble-topic-tools
 sudo apt-get install ros-humble-pcl-ros
 ```
 
